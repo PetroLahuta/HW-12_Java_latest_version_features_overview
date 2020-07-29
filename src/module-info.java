@@ -1,0 +1,3 @@
+module JavaLatestVersionFeaturesOverview {
+    requires user;
+}
