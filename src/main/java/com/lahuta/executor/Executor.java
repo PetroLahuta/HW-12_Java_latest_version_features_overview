@@ -11,7 +11,7 @@ public class Executor {
             "4. All users", "-----------------------------"};
     private final static String INCORRECT_INPUT = "Incorrect input! Try again";
 
-    public void printAdminMemu() {
+    public void printAdminMenu() {
         int choise = 0;
         while (true) {
             printMenus(ADMIN_MENU);
@@ -19,7 +19,7 @@ public class Executor {
                 choise = scanner.nextInt();
             } catch (NumberFormatException u) {
                 System.out.println(INCORRECT_INPUT);
-                printAdminMemu();
+                printAdminMenu();
             }
             switch (choise) {
                 case 1:
