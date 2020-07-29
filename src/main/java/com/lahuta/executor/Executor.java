@@ -7,18 +7,18 @@ import java.util.Scanner;
 public class Executor {
     Scanner scanner = new Scanner(System.in);
     private Admin admin = new Admin();
-    private final String[] adminMenuList = {"1. New user", "2. Change user", "3. Delete user",
+    private final String[] ADMIN_MENU = {"1. New user", "2. Change user", "3. Delete user",
             "4. All users", "-----------------------------"};
-    private static final String RepeatInput = "Incorrect input! Try again";
+    private final static String INCORRECT_INPUT = "Incorrect input! Try again";
 
     public void printAdminMemu() {
         int choise = 0;
         while (true) {
-            printMenus(adminMenuList);
+            printMenus(ADMIN_MENU);
             try {
                 choise = scanner.nextInt();
             } catch (NumberFormatException u) {
-                System.out.println(RepeatInput);
+                System.out.println(INCORRECT_INPUT);
                 printAdminMemu();
             }
             switch (choise) {
