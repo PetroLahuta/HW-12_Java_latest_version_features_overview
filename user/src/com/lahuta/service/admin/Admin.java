@@ -60,9 +60,7 @@ public class Admin {
             changeUserName(user);
             System.out.println(COMPLETE);
         } else if (number2 == 2) {
-            System.out.println(USER_WEIGHT);
             ChangeUserWeight(user);
-            System.out.println(COMPLETE);
         }
     }
 
