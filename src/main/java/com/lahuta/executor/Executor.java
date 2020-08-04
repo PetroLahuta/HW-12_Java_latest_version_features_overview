@@ -1,14 +1,17 @@
 package main.java.com.lahuta.executor;
 
 import com.lahuta.service.admin.Admin;
+import com.lahuta.util.ConsoleInputUtil;
 
 import java.util.Scanner;
 
 public class Executor {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
+    private ConsoleInputUtil consoleInputUtil = new ConsoleInputUtil();
     private Admin admin = new Admin();
-    private final String[] ADMIN_MENU = {"1. New user", "2. Change user", "3. Delete user",
-            "4. All users", "-----------------------------"};
+    private final String[] ADMIN_MENU = {"-----------------------------", "Make your choice (enter the number):",
+            "1. New user", "2. Change user", "3. Delete user", "4. All users", "0. Exit",
+            "-----------------------------"};
     private final static String INCORRECT_INPUT = "Incorrect input! Try again";
 
     public void printAdminMenu() {
@@ -16,12 +19,15 @@ public class Executor {
         while (true) {
             printMenus(ADMIN_MENU);
             try {
-                choise = scanner.nextInt();
+                choise = consoleInputUtil.read(0, 4);
             } catch (NumberFormatException u) {
                 System.out.println(INCORRECT_INPUT);
                 printAdminMenu();
             }
             switch (choise) {
+                case 0:
+                    admin.exit();
+                    break;
                 case 1:
                     admin.addUser();
                     break;

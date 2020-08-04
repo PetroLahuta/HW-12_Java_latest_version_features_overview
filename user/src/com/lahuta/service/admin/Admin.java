@@ -1,16 +1,20 @@
 package com.lahuta.service.admin;
 
 import com.lahuta.model.user.User;
+import com.lahuta.util.ConsoleInputUtil;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Admin {
     private final static String USER_NAME = "Please enter User Name";
     private final static String USER_WEIGHT = "Please enter User weight";
+    private final static String USER_NUMBER = "Please enter number of User";
     private final static String COMPLETE = "It is done";
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
+    private ConsoleInputUtil consoleInputUtil = new ConsoleInputUtil();
     List<User> list = new ArrayList<>();
 
     public void addUser() {
@@ -37,9 +41,11 @@ public class Admin {
     }
 
     public void deleteUser() {
+
         printAllUsers();
-        System.out.println(USER_NAME);
+        System.out.println(USER_NUMBER);
         int count = scanner.nextInt();
+
         for (var i = 0; i < list.size(); i++) {
             if (count == i + 1) {
                 list.remove(i);
@@ -50,9 +56,11 @@ public class Admin {
 
     public void changeUser() {
         User user;
-        System.out.println("Choose user");
+        System.out.println("Choose number of user");
         printAllUsers();
-        var number = scanner.nextInt();
+
+
+        var number = consoleInputUtil.read(1, list.size());
         user = list.get(number - 1);
         System.out.println("What need to change?" + "\n1. Name" + "\n2. Weight");
         var number2 = scanner.nextInt();
@@ -74,5 +82,10 @@ public class Admin {
         System.out.println(USER_WEIGHT);
         user.setWeight(scanner.nextInt());
         System.out.println(COMPLETE);
+    }
+
+    public void exit() {
+        System.out.println("You have chosen to exit" + "\n" + COMPLETE);
+        System.exit(0);
     }
 }
